@@ -1,0 +1,85 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Report Issue</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="createForm" class="create-form" (ngSubmit)="addIssues(createForm.value)">
+
+<mat-form-field class="field-full-width">
+<input matInput placeholder="Employee Code" formControlName="employee_code" #employee_code>
+</mat-form-field>
+<br>
+
+
+  <mat-form-field class="field-full-width">
+  <input matInput placeholder="Issue Title" formControlName="title" #title>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="field-full-width">
+      <textarea matInput placeholder="summary" formControlName="summary" #summary></textarea>
+      </mat-form-field>
+      <br>
+
+  <mat-form-field class="field-full-width">
+      <mat-select placeholder="Site Of Issue" formControlName="site_of_issue" #site_of_issue>
+          <mat-option value="Quantum">Quantum</mat-option>
+          <mat-option value="Eureka">Eureka</mat-option>
+          <mat-option value="Bangalore">Bangalore</mat-option>
+          <mat-option value="US">US</mat-option>
+</mat-select>
+</mat-form-field>
+  <br>
+
+  <mat-form-field class="field-full-width">
+      <mat-select placeholder="Department" formControlName="department" #department>
+        <mat-option value="IT">IT</mat-option>
+        <mat-option value="Accounts & Finance">Accounts & Finance</mat-option>
+        <mat-option value="HR">HR</mat-option>
+        <mat-option value="Infrastructure">Infrastructure</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+      </mat-form-field>
+
+
+      <br>
+
+
+
+
+
+
+
+
+
+
+
+
+  <mat-form-field class="field-full-width">
+  <mat-select placeholder="Severity" formControlName="severity" #severity>
+    <mat-option value="Low">Low</mat-option>
+    <mat-option value="Medium">Medium</mat-option>
+    <mat-option value="High">High</mat-option>
+  </mat-select>
+  </mat-form-field>
+  <br>
+
+
+
+
+  <mat-divider></mat-divider>
+  <br><br>
+  <button mat-raised-button color="accent" routerLink="/list">Back</button>
+  <button type="submit" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+
+
+
+
+
+
+    </form>
+  </mat-card>
+</div>

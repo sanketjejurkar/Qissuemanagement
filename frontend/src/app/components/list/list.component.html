@@ -1,0 +1,70 @@
+<div>
+  <br>
+  <mat-card>
+<button mat-raised-button color="warn" routerLink="/create">Report Issue</button>
+
+<br><br>
+<mat-divider></mat-divider>
+<br>
+<table mat-table [dataSource]="issues">
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element">{{element.title}}</td>
+    </ng-container>
+
+
+<ng-container matColumnDef="employee_code">
+        <th mat-header-cell *matHeaderCellDef>Employee Code</th>
+        <td mat-cell *matCellDef="let element">{{element.employee_code}}</td>
+    </ng-container>
+
+
+
+
+
+<ng-container matColumnDef="summary">
+    <th mat-header-cell *matHeaderCellDef>Summary</th>
+    <td mat-cell *matCellDef="let element">{{element.summary}}</td>
+</ng-container>
+
+
+<ng-container matColumnDef="site_of_issue">
+    <th mat-header-cell *matHeaderCellDef>Site Of Issue</th>
+    <td mat-cell *matCellDef="let element">{{element.site_of_issue}}</td>
+</ng-container>
+
+
+
+
+<ng-container matColumnDef="severity">
+    <th mat-header-cell *matHeaderCellDef>Severity</th>
+    <td mat-cell *matCellDef="let element">{{element.severity}}</td>
+</ng-container>
+
+<ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element">{{element.status}}</td>
+</ng-container>
+
+
+<ng-container matColumnDef="department">
+    <th mat-header-cell *matHeaderCellDef>Department</th>
+    <td mat-cell *matCellDef="let element">{{element.department}}</td>
+</ng-container>
+
+<ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+    <td mat-cell *matCellDef="let element" class="mat-column-right">
+      <button mat-button color="primary" (click)="editIssues(element._id)">Edit</button>
+      <button mat-button color="warn" (click)="deleteIssue(element._id)">Delete</button>
+    </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayColoum"></tr>
+<tr mat-row *matRowDef="let row; columns:displayColoum;"></tr>
+
+
+</table>
+</mat-card>
+</div>
+

@@ -1,0 +1,43 @@
+.login{
+height: 400px;
+width: 500px;
+margin: auto;
+margin-left: 400px;
+margin-top: 120px;
+border: solid black 2px;
+padding-left:50px;
+padding-right: 50px;
+background-color: aqua;   
+
+}
+.header{
+  height: 100px;
+  width: auto;
+  padding: 10px;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 100px;
+
+}
+
+
+.logo {
+  height: 100px;
+  width: 100px;
+  padding: 10px;
+  margin-bottom:50px;
+  margin-left: 185px;
+  
+  
+}
+.loginheader{
+  margin: auto;
+  margin-left: 205px;
+}
+
+.button{
+  width: 50px;
+  margin-left: 210px;
+  margin-top: 10px;
+}
