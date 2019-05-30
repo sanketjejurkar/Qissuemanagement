@@ -15,20 +15,22 @@ import { Issue } from '../../issue.model';
 export class ListComponent implements OnInit {
 
   issues: Issue[];
-  displayColoum = ['employee_code','title','severity' , 'site_of_issue' ,'summary',  'status', 'department','actions' ];
+  displayColoum = ['title', 'summary', 'site_of_issue'  ,  'status', 'department', 'severity' , 'actions' ];
 
   constructor(private issueService: IssueService, private router: Router ) { }
 
   ngOnInit() {
+    console.log('ng onit called--------');
     this.fetchIssues();
   }
 
   fetchIssues() {
+    console.log('called from ngonit');
     this.issueService.getIssue()
     .subscribe((data: Issue[]) => {
       this.issues = data;
       console.log('Data Requested--------');
-      console.log(this.issues[ 'severity' ]);
+
     });
   }
 

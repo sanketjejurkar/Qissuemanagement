@@ -20,32 +20,29 @@ return  this.http.get(`${this.url}/issues/${id}`);
 }
 
 
-addIssue(title,employee_code, responsible, severity, description,summary,site_of_issue,department) {
+addIssue(title, summary,site_of_issue,department,severity) {
 const issue = {
 title : title,
-employee_code: employee_code,
 summary: summary,
 site_of_issue: site_of_issue,
 department: department,
-responsible: responsible,
-severity: severity,
-description: description
+severity: severity
+
 };
+//console.log('issue----------',issue);
 
 return this.http.post(`${this.url}/issues/add`, issue);
 
 }
 
-updateIssue(id, title,employee_code, responsible, severity, description,summary,site_of_issue,department){
+updateIssue(id,title, summary,site_of_issue,department,severity){
 const issue = {
   title : title,
-  employee_code: employee_code,
   summary: summary,
   site_of_issue: site_of_issue,
   department: department,
-  responsible: responsible,
-  severity: severity,
-  description: description
+  severity: severity
+  
 };
   return this.http.post(`${this.url}/issues/update/${id}`, issue);
 }

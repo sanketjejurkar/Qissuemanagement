@@ -7,6 +7,7 @@ import { SocialUser } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { NgForm } from "@angular/forms";
 import { LogService } from '../../log.service' ;
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 
 
@@ -29,8 +30,9 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.logService.login(user.idToken).subscribe(data => {
         console.log('inside navigate');
+        this.router.navigateByUrl('/list');
+
             });
-      this.router.navigateByUrl('/list');
 
     });
 
@@ -41,9 +43,11 @@ export class LoginComponent implements OnInit {
   signInWithGoogle(): void {
     console.log('sign in is getting called');
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+
   }
 
   signOut(): void {
+    console.log('signout os called');
     this.authService.signOut();
 
   }

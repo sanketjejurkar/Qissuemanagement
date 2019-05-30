@@ -25,15 +25,12 @@ constructor(private issueService: IssueService , private router: Router , privat
   }
 
 
-  createForm(){
+  createForm() {
     this.updateForm = this.fb.group({
       title: ['', Validators.required],
-      employee_code: '',
       summary : '',
       site_of_issue : '',
       department : '',
-      responsible: '',
-      description: '',
       severity: '',
       status: ''
     });
@@ -45,12 +42,9 @@ constructor(private issueService: IssueService , private router: Router , privat
       this.issueService.getIssueById(this.id).subscribe(res =>{
         this.issue = res;
         this.updateForm.get('title').setValue(this.issue.title);
-        this.updateForm.get('employee_code').setValue(this.issue.title);
-        this.updateForm.get('summary').setValue(this.issue.title);
-        this.updateForm.get('site_of_issue').setValue(this.issue.title);
-        this.updateForm.get('department').setValue(this.issue.title);
-        this.updateForm.get('responsible').setValue(this.issue.responsible);
-        this.updateForm.get('description').setValue(this.issue.description);
+        this.updateForm.get('summary').setValue(this.issue.summary);
+        this.updateForm.get('site_of_issue').setValue(this.issue.site_of_issue);
+        this.updateForm.get('department').setValue(this.issue.department);
         this.updateForm.get('severity').setValue(this.issue.severity);
         this.updateForm.get('status').setValue(this.issue.status);
       });
@@ -60,8 +54,8 @@ constructor(private issueService: IssueService , private router: Router , privat
 
 
 
-  updateIssue( title,employee_code , summary , site_of_issue, department , responsible, severity,  description, status) {
-  this.issueService.updateIssue(this.id, employee_code,summary,site_of_issue,title, department,responsible, description, severity).subscribe(() => {
+  updateIssue( title, summary , site_of_issue, department ,  severity,status) {
+  this.issueService.updateIssue(this.id, summary,site_of_issue,title, department, severity).subscribe(() => {
       this.snackbar.open('Issue Updated Successfully', 'Ok', {
         duration: 3000
       });

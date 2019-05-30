@@ -12,7 +12,7 @@ export class LogService {
 
   login(u) {
     console.log('idtoken inside logservice' + u);
-    return this.http.post('http://localhost:4000/api/authenticate', {id: u});
+   return this.http.post('http://localhost:4000/api/authenticate', {id: u});
   }
 
 

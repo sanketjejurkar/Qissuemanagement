@@ -15,22 +15,22 @@ export class CreateComponent implements OnInit {
 
   constructor(private issueService: IssueService , private router: Router, private fb: FormBuilder) {
       this.createForm = this.fb.group({
-        employee_code: '',
         title: ['', Validators.required],
         summary: '',
         site_of_issue: '',
         department: '',
-        responsible: '',
-        description: '',
         severity: ''
 
       });
+      //console.log('this.createForm----------', this.createForm);
     }
-  addIssues(value) {
-    console.log(value);
-    // this.issueService.addIssue(title, employee_code,summary,site_of_issue,responsible,department ,severity, description).subscribe(() => {
-    //   this.router.navigate([`/list`]);
-    // });
+  addIssues(title,summary,site_of_issue,department,severity) {
+   
+    this.issueService.addIssue(title,summary,site_of_issue,department,severity).subscribe(() => {
+      this.router.navigate([`/list`]);
+
+     });
+    
   }
 
   ngOnInit() {

@@ -8,9 +8,7 @@ const jwt = require('jsonwebtoken');
 const Schema = mongoose.Schema;
  
 let Issue = new Schema({
-    employee_code:{
-         type:String
-    },
+  
 
     title:{
         type:String
@@ -21,21 +19,19 @@ let Issue = new Schema({
     },
 
     site_of_issue: {
-        type:String,
+        type:String
     },
 
-    responsible:{
+    department:{
         type:String
     },
-    description:{
-        type:String
-    },
+  
     severity:{
         type:String
     },
     status:{
         type:String,
-        default:'Open'
+        
     }
 });
 

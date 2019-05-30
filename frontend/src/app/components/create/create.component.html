@@ -8,10 +8,6 @@
     <br>
     <form [formGroup]="createForm" class="create-form" (ngSubmit)="addIssues(createForm.value)">
 
-<mat-form-field class="field-full-width">
-<input matInput placeholder="Employee Code" formControlName="employee_code" #employee_code>
-</mat-form-field>
-<br>
 
 
   <mat-form-field class="field-full-width">
@@ -47,7 +43,7 @@
 
       <br>
 
-
+  
 
 
 
@@ -67,13 +63,11 @@
   </mat-form-field>
   <br>
 
-
-
-
   <mat-divider></mat-divider>
   <br><br>
   <button mat-raised-button color="accent" routerLink="/list">Back</button>
-  <button type="submit" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+  <!-- <button type="submit" (click)="addIssues(title.value,summary.value,site_of_issue.value,department.value,severity.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button> -->
+  <button type="submit" (click)="addIssues(title.value,summary.value,site_of_issue.value,department.value,severity.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
 
 
 
