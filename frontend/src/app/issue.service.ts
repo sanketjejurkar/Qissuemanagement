@@ -20,13 +20,13 @@ return  this.http.get(`${this.url}/issues/${id}`);
 }
 
 
-addIssue(title, summary,site_of_issue,department,severity) {
+addIssue(createForm) {
 const issue = {
-title : title,
-summary: summary,
-site_of_issue: site_of_issue,
-department: department,
-severity: severity
+title: createForm.value.title,
+summary: createForm.value.summary,
+site_of_issue: createForm.value.site_of_issue,
+department: createForm.value.department,
+status: createForm.value.status
 
 };
 //console.log('issue----------',issue);
@@ -42,7 +42,7 @@ const issue = {
   site_of_issue: site_of_issue,
   department: department,
   severity: severity
-  
+
 };
   return this.http.post(`${this.url}/issues/update/${id}`, issue);
 }

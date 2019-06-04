@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +8,7 @@ import { GoogleLoginProvider } from 'angularx-social-login';
 import { NgForm } from "@angular/forms";
 import { LogService } from '../../log.service' ;
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { MatSnackBar} from '@angular/material';
 
 
 
@@ -19,38 +20,54 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private router: Router, private authService: AuthService , private logService: LogService) { }
   user: SocialUser;
   serverErrorMessages: string;
 
+
+  constructor(private router: Router, private authService: AuthService , private logService: LogService , private snackbar: MatSnackBar) { }
+
   ngOnInit() {
-    console.log('ng on it is called' );
     this.authService.authState.subscribe((user) => {
-      this.user = user;
+    //  res=>{
+    this.user = user;
+      console.log('user is printing------------',user.email);
+      console.log('user tocken is printing------------',user.idToken);
+      //this.logService.setToken(res['token']);
+    if (user.email.endsWith('@quantiphi.com')){
       this.logService.login(user.idToken).subscribe(data => {
-        console.log('inside navigate');
-        this.router.navigateByUrl('/list');
 
-            });
 
+      },
+
+      err=> {
+        console.log(err)
+      });
+      this.router.navigateByUrl('/list');
+
+
+  } else {
+
+      this.snackbar.open('Only Quantiphi Employee can Access This', 'Ok', {
+        duration: 3000
+      });
+
+      this.router.navigateByUrl('/login');
+  }
+
+  //  }
+    /*err=>{
+      this.serverErrorMessages = err.error.message; }*/
     });
-
-
   }
-
-
   signInWithGoogle(): void {
-    console.log('sign in is getting called');
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+
 
   }
 
-  signOut(): void {
-    console.log('signout os called');
-    this.authService.signOut();
 
-  }
+
+
 
 
 

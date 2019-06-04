@@ -2,13 +2,14 @@
   <br>
   <mat-card>
 <button mat-raised-button color="warn" routerLink="/create">Report Incident</button>
-<button mat-raised-button color="primary">logout</button>
+<button mat-raised-button color="primary" (click)="signOut()">log out</button>
 
 <br><br>
 <mat-divider></mat-divider>
 <br>
 <table mat-table [dataSource]="issues">
     <ng-container matColumnDef="title">
+
         <th mat-header-cell *matHeaderCellDef>Title</th>
         <td mat-cell *matCellDef="let element">{{element.title}}</td>
     </ng-container>

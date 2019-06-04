@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IssueService } from '../../issue.service';
 import { MatTableDataSource } from '@angular/material';
 import { Issue } from '../../issue.model';
+import { AuthService } from 'angularx-social-login';
 
 
 
@@ -15,9 +16,9 @@ import { Issue } from '../../issue.model';
 export class ListComponent implements OnInit {
 
   issues: Issue[];
-  displayColoum = ['title', 'summary', 'site_of_issue'  ,  'status', 'department', 'severity' , 'actions' ];
+  displayColoum = ['title', 'summary', 'site_of_issue'  ,  'status', 'department' , 'actions' ];
 
-  constructor(private issueService: IssueService, private router: Router ) { }
+  constructor(private issueService: IssueService, private router: Router, private authService: AuthService ) { }
 
   ngOnInit() {
     console.log('ng onit called--------');
@@ -29,7 +30,7 @@ export class ListComponent implements OnInit {
     this.issueService.getIssue()
     .subscribe((data: Issue[]) => {
       this.issues = data;
-      console.log('Data Requested--------');
+      console.log('Data Requested--------', data);
 
     });
   }
@@ -44,5 +45,14 @@ export class ListComponent implements OnInit {
       this.fetchIssues();
     });
   }
+
+  signOut(): void {
+    console.log('signout os called');
+    this.authService.signOut();
+  this.router.navigateByUrl('/login');
+
+
+  }
+
 
 }
